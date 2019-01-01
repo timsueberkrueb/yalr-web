@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="/static/style/navbar.css">
+    <link rel="stylesheet" href="/static/style/landing.css">
+    <title>{{ config.title }}</title>
+</head>
+<body>
+    {% include "includes/navbar.html" %}
+    <div class="card bg-primary-green">
+        {% set page = get_page(path="landing/top_card.md") %}
+        {{ page.content | safe }}
+    </div>
+    <div class="card bg-light-green">
+        <div class="grid-3">
+            <div>
+                {% set features_card = get_page(path="landing/feature_1_card.md") %}
+                {{ features_card.content | safe }}
+            </div>
+            <div>
+                {% set features_card = get_page(path="landing/feature_2_card.md") %}
+                {{ features_card.content | safe }}
+            </div>
+            <div>
+                {% set features_card = get_page(path="landing/feature_3_card.md") %}
+                {{ features_card.content | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="card bg-darker-blueish">
+        <div class="grid-2">
+            <div class="x-scrollable">
+                {% set code_snippet = get_page(path="landing/code_snippet.md") %}
+                {{ code_snippet.content | safe }}
+            </div>
+            <div style="min-width: 100px">
+                {% set code_card = get_page(path="landing/code_card.md") %}
+                {{ code_card.content | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="card bg-light-blueish">
+        {% set bottom_card = get_page(path="landing/bottom_card.md") %}
+        {{ bottom_card.content | safe }}
+    </div>
+</body>
+</html>

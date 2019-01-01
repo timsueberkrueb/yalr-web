@@ -1,0 +1,29 @@
+{% set section = get_section(path="_index.md") %}
+<input id="nav-toggle" type="checkbox"/>
+<nav class="navbar">
+    <span class="nav-item nav-brand">
+        {% if current_path %}
+            {% if current_path == 'rustdoc_nav/' %}
+                <a href="/">YALR</a> / <a href="/doc">Doc</a>
+            {% else %}
+                {% set current_section_path = current_path | safe | split(pat = '/') | first %}
+                <a href="/">YALR</a> {% if current_path != "/" %}/ <a href="/{{ current_section_path }}">{{ current_section_path | title }}</a>{% endif %}
+            {% endif %}
+        {% else %}
+            <a href="/">YALR</a>
+        {% endif %}
+    </span>
+    <div class="nav-row nav-hide-condensed">
+        {% for p in section.subsections %}
+            {% set subsection = get_section(path=p) %}
+            <a class="nav-item" href="/{{subsection.title | slugify}}">{{ subsection.title }}</a>
+        {% endfor %}
+    </div>
+    <label id="nav-button" class="nav-hide-wide" for="nav-toggle">&#9776;</label>
+</nav>
+<div id="nav-menu" class="nav-hide-wide">
+    {% for p in section.subsections %}
+    {% set subsection = get_section(path=p) %}
+        <a class="nav-item" href="/{{subsection.title | slugify}}">{{ subsection.title }}</a>
+    {% endfor %}
+</div>

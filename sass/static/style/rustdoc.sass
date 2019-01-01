@@ -1,0 +1,75 @@
+@import "_includes/_typography.sass"
+
+// Used for embedding in rustdoc
+.nav-container
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  z-index: 999
+
+#nav-menu
+  top: 64px
+
+#theme-choices
+  z-index: 1000
+
+nav.sub
+  padding-top: 64px !important
+
+section.main
+  padding-top: 64px !important
+
+div.theme-picker
+  padding-top: 64px !important
+
+@media (max-width: 700px)
+  div.theme-picker
+    padding-top: 8px !important
+  nav.sub
+    padding-top: 8px !important
+  nav.sidebar
+    margin-top: 64px !important
+  .sidebar-elems.show-it
+    margin-top: 64px !important
+
+// FIXME: Overlapping
+
+// Ugly fix for alignment issues due to fixed navbar
+/*
+ * The code below adds some padding to the top of the current anchor target so
+ * that, when navigating to it, the header isn't hidden by the navbar at the
+ * top. This is especially complicated because we want to *remove* the padding
+ * after navigation so that hovering over the header shows the permalink icon
+ * correctly. Thus, we create a CSS animation to remove the extra padding after
+ * a second. We have two animations so that navigating to an anchor within the
+ * page always restarts the animation.
+ *
+ * See <https://github.com/mkdocs/mkdocs/issues/843> for more details.
+ */
+section.content *[id]:target:before
+  display: block
+  content: ""
+  margin-top: -64px
+  height: 64px
+  visibility: hidden
+  text-decoration: none
+  background-clip: padding-box
+  pointer-events: none
+  animation: 0s 1ms forwards collapse-anchor-padding-1
+
+body.clicky section.content *[id]:target:before
+    animation-name: collapse-anchor-padding-2
+
+@keyframes collapse-anchor-padding-1
+    to
+        margin-top: 0
+        height: 0
+
+@keyframes collapse-anchor-padding-2
+    to
+        margin-top: 0
+        height: 0

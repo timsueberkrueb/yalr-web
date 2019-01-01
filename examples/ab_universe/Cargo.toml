@@ -1,0 +1,9 @@
+[package]
+name = "ab_universe"
+version = "0.1.0"
+authors = ["Tim Süberkrüb <dev@timsueberkrueb.io>"]
+edition = "2018"
+
+[dependencies]
+yalr = { path = "../../../yalr/yalr" }  # FIXME
+lazy_static = "1.2.0"

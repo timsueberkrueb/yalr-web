@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/static/style/navbar.css"/>
+<link rel="stylesheet" href="/static/style/rustdoc.css"/>
+<script>
+    /* Toggle the `clicky` class on the body when clicking links to let us
+       retrigger CSS animations. See rustdoc.sass for more details. */
+    document.addEventListener("DOMContentLoaded", function() {
+        for (let a of document.getElementsByTagName('a')) {
+            a.onclick = function() {
+                document.getElementsByTagName('body')[0].classList.toggle("clicky");
+            };
+        }
+    });
+</script>

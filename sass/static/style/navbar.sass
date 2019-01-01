@@ -1,0 +1,72 @@
+@import "_includes/_brand_colors"
+
+nav.navbar
+  display: flex
+  background-color: $dark-blueish
+  justify-content: space-between
+  flex-direction: row
+  align-items: stretch
+  padding: 16px
+  user-select: none
+  width: 100%
+  flex: 1
+  // Override rustdoc style (if necessary)
+  max-width: none !important
+  max-height: 64px
+  overflow: hidden
+
+.nav-row
+  display: flex
+  justify-content: right
+
+.nav-brand
+  padding-left: 0 !important
+
+.nav-brand *
+  font-size: 18pt
+  text-decoration: none
+
+.nav-item *
+  color: #fff
+
+.nav-item
+  color: #fff
+  text-decoration: none
+  font-size: 18pt
+  padding-left: 16px
+
+#nav-toggle
+  font-size: 18pt
+  display: none
+
+#nav-button
+  color: #fff
+  cursor: pointer
+
+#nav-menu
+  user-select: none
+  background-color: $darker-blueish
+  width: 100%
+  display: flex
+  flex-direction: column
+  padding-bottom: 16px
+  overflow: hidden
+  transform: scaleY(0)
+  transform-origin: top
+  transition: transform 100ms ease-out
+  position: absolute
+
+#nav-toggle:checked ~ #nav-menu
+  transform: scaleY(1)
+  transition: transform 100ms ease-in
+
+#nav-menu .nav-item
+  padding-top: 16px
+
+@media (max-width: 700px)
+  .nav-hide-condensed
+    display: none !important
+
+@media (min-width: 700px)
+  .nav-hide-wide
+    display: none !important
